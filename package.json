@@ -1,6 +1,6 @@
 {
   "name": "ckeditor-imgur",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "This is a plugin for ckeditor to upload image through imgur",
   "main": "index.js",
   "scripts": {
