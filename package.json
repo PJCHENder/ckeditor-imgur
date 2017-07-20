@@ -1,0 +1,15 @@
+{
+  "name": "ckeditor-imgur",
+  "version": "0.0.4",
+  "description": "This is a plugin for ckeditor to upload image through imgur",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ckeditor",
+    "imgur"
+  ],
+  "author": "pjchender",
+  "license": "ISC"
+}
