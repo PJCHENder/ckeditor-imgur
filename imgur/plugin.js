@@ -1,7 +1,7 @@
-(function() {
+(function () {
   CKEDITOR.plugins.add('imgur', {
     lang: ['zh', 'en'],
-    init: function(editor) {
+    init: function (editor) {
       ClientID = editor.config.imgurClientID;
       if (!ClientID)
         alert(editor.lang.imgur.ClientIDMissing);
@@ -17,7 +17,7 @@
         color: "#fff"
       }).hide();
 
-      function getToken () {
+      function getToken() {
         var settings = {
           "async": true,
           "crossDomain": true,
@@ -43,7 +43,7 @@
         getToken()
       })
 
-      editor.on("instanceReady", function() {
+      editor.on("instanceReady", function () {
         var $w = $(editor.window.getFrame().$).parent();
         $w.css({
           position: 'relative'
@@ -59,11 +59,11 @@
       });
 
       editor.addCommand('imgur', {
-        exec: function() {
+        exec: function () {
           $input = $('<input type="file" multiple/>');
-          $input.on("change", function(e) {
+          $input.on("change", function (e) {
             files = e.target.files;
-            $.each(files, function(i, file) {
+            $.each(files, function (i, file) {
               count++;
               form = new FormData();
               form.append('image', file);
@@ -95,7 +95,8 @@
                   if (res.data.error) {
                     alert(editor.lang.imgur.failToUpload + res.data.error);
                   } else {
-                    content = '<img src="' + res.data.link + '"/>';
+                    let httpLink = res.data.link.replace(/http/i, 'https')
+                    content = `<img src= '${httpLink}'/>`;
                     var element = CKEDITOR.dom.element.createFromHtml(content);
                     editor.insertElement(element);
                   }
@@ -110,7 +111,7 @@
         }
       });
 
-      editor.on('paste', function(evt) {
+      editor.on('paste', function (evt) {
 
         var data = evt.data,
           // Prevent XSS attacks
@@ -140,7 +141,7 @@
               cache: false,
               contentType: false,
               processData: false
-            }).always(function(jqXHR) {
+            }).always(function (jqXHR) {
               count--;
               $placeholder.text(count + editor.lang.imgur.uploading).toggle(count != 0);
 
@@ -153,7 +154,8 @@
               if (res.data.error) {
                 alert(editor.lang.imgur.failToUpload + res.data.error);
               } else {
-                content = '<img src="' + res.data.link + '"/>';
+                let httpLink = res.data.link.replace(/http/i, 'https')
+                content = `<img src= '${httpLink}'/>`;
                 var element = CKEDITOR.dom.element.createFromHtml(content);
                 editor.insertElement(element);
               }
@@ -199,7 +201,8 @@
               if (res.data.error) {
                 alert(editor.lang.imgur.failToUpload + res.data.error);
               } else {
-                content = '<img src="' + res.data.link + '"/>';
+                let httpLink = res.data.link.replace(/http/i, 'https')
+                content = `<img src= '${httpLink}'/>`;
                 var element = CKEDITOR.dom.element.createFromHtml(content);
                 editor.insertElement(element);
               }
