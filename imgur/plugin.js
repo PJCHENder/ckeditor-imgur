@@ -93,7 +93,7 @@
                   if (res.data.error) {
                     alert(editor.lang.imgur.failToUpload + res.data.error)
                   } else {
-                    let httpLink = res.data.link.replace(/http/i, 'https')
+                    let httpLink = res.data.link.replace(/^https?/i, 'https')
                     content = `<img src= '${httpLink}'/>`
                     var element = CKEDITOR.dom.element.createFromHtml(content)
                     editor.insertElement(element)
@@ -151,7 +151,7 @@
               if (res.data.error) {
                 alert(editor.lang.imgur.failToUpload + res.data.error)
               } else {
-                let httpLink = res.data.link.replace(/http/i, 'https')
+                let httpLink = res.data.link.replace(/^https?/i, 'https')
                 content = `<img src= '${httpLink}'/>`
                 var element = CKEDITOR.dom.element.createFromHtml(content)
                 editor.insertElement(element)
@@ -198,7 +198,7 @@
               if (res.data.error) {
                 alert(editor.lang.imgur.failToUpload + res.data.error)
               } else {
-                let httpLink = res.data.link.replace(/http/i, 'https')
+                let httpLink = res.data.link.replace(/^https?/i, 'https')
                 content = `<img src= '${httpLink}'/>`
                 var element = CKEDITOR.dom.element.createFromHtml(content)
                 editor.insertElement(element)
