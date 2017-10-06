@@ -109,7 +109,7 @@
         }
       })
 
-      editor.on('paste', function (evt) {
+      editor.on('drop', function (evt) {
         var data = evt.data,
           // Prevent XSS attacks
           tempDoc = document.implementation.createHTMLDocument(''),
